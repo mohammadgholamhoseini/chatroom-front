@@ -56,11 +56,18 @@ export function Delete(url) {
     );
 }
 
-// --------------------------------------------Login----------------------------------------------
+// --------------------------------------------Register----------------------------------------------
 export function registerUserApi(user) {
     return post('/register', {
         username:user.username,
         email:user.email,
+        password:user.password,
+    })
+}
+// --------------------------------------------Login----------------------------------------------
+export function loginUserApi(user) {
+    return get('/login', {
+        username:user.username,
         password:user.password,
     })
 }

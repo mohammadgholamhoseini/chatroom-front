@@ -9,7 +9,7 @@ export default  function Notification (props){
     return (
         <div>
             <ToastContainer position="bottom-left"
-                            theme="light"
+                            theme="colored"
                             autoClose={5000}
                             hideProgressBar={false}
                             newestOnTop={false}
