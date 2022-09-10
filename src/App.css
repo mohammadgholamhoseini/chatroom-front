@@ -1,6 +1,57 @@
-.register-section{
-  background-color: #eee;
+.register-section {
+    background-color: #eee;
 }
-.register-card{
-  border-radius: 25px;
+
+.register-card {
+    border-radius: 25px;
+}
+
+.registerImage, .loginImage {
+    text-align: center;
+    width: 90%;
+}
+
+.registerFormGrid, .registerImageGrid, .loginFormGrid, .loginImageGrid {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-items: center;
+    height: 100vh;
+}
+
+.landing-content {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+}
+
+.landing-main {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    height: 100vh;
+}
+.muirtl-12i7wg6-MuiPaper-root-MuiDrawer-paper{
+    border-left: 0.5px solid !important;
+    border-color: #EFEFEF !important;
+}
+
+@media screen and (max-width: 600px) {
+    .registerImageGrid img, .loginImageGrid img {
+        margin-left: 5%;
+    }
+
+    .registerImageGrid, .loginImageGrid {
+        width: 100%;
+        height: auto;
+    }
+
+    .registerFormGrid, .loginFormGrid {
+        padding: 10%;
+        height: auto;
+    }
+
+    .muirtl-ahj2mt-MuiTypography-root {
+        font-size: 0.85rem !important;
+    }
 }

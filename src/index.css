@@ -8,6 +8,8 @@
   font-style: normal;
 }
 *{
-  direction: rtl;
   font-family: "Tanha" !important;
+}
+.App-register .App-login{
+  height: 100vh !important;
 }
