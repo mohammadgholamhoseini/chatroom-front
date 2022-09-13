@@ -59,7 +59,7 @@ export default function () {
                             <div dir='rtl'>
                                 <TextField
                                     margin="normal"
-                                    size="small"
+
                                     required
                                     fullWidth
                                     id="username"
@@ -76,7 +76,7 @@ export default function () {
                                 />
                                 <TextField
                                     margin="normal"
-                                    size="small"
+
                                     required
                                     fullWidth
                                     label="کلمه عبور"

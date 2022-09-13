@@ -72,10 +72,13 @@ const Drawer = styled(MuiDrawer, {shouldForwardProp: (prop) => prop !== 'open'})
     }),
 );
 
-export default function MiniDrawer() {
+export default function MiniDrawer({
+                                       Component = () => {
+                                           return ''
+                                       }, ...props
+                                   }) {
     const navigate = useNavigate();
     const theme = useTheme();
-    console.log(routesItem)
     const [open, setOpen] = React.useState(false);
 
     const handleDrawerOpen = () => {
@@ -86,15 +89,14 @@ export default function MiniDrawer() {
         setOpen(false);
     };
 
-    const navigation =(path)=>{
-        console.log(path)
+    const navigation = (path) => {
         navigate(path);
     }
-
     return (
-        <Box sx={{display: 'flex'}}>
+        <Box sx={{display: 'block'}} dir="rtl">
             <CssBaseline/>
-            <AppBar position="fixed" open={open} elevation={0} sx={{backgroundColor: '#ffff', borderBottom: 0.5,borderColor:"#EFEFEF"}}>
+            <AppBar position="fixed" open={open} elevation={0}
+                    sx={{backgroundColor: '#ffff', borderBottom: 0.5, borderColor: "#EFEFEF"}}>
                 <Toolbar dir='rtl' sx={open ? {marginLeft: "250px"} : {marginLeft: "70px"}}>
                     {open === false ? <IconButton
                         aria-label="open drawer"
@@ -116,29 +118,35 @@ export default function MiniDrawer() {
                 </Toolbar>
             </AppBar>
 
-            <Drawer variant="permanent" sx={{border:null}} open={open}>
+            <Drawer variant="permanent" sx={{border: null, display: "block"}} elevation={0} open={open}>
                 <DrawerHeader>
                     <Typography>واژه</Typography>
                 </DrawerHeader>
-                <List sx={{ height:'100vh'}} dir="rtl">
+                <List sx={{height: '100vh', display: "block"}} dir="rtl">
                     {routesItem.map((item, index) => (
-                        item.title!==""?
-                        <ListItem onClick={()=>navigation(item.path)} key={item} disablePadding sx={{
-                                      display: 'block'
-                                  }} >
-                            <ListItemButton sx={{height:"64px"}}>
-                                <ListItemIcon sx={{marginLeft:"10px"}}>
-                                    {item.icon}
-                                </ListItemIcon>
-                                <ListItemText primary={item.title} sx={{opacity: open ? 1 : 0}}/>
-                            </ListItemButton>
-                        </ListItem>
+                        item.title !== "" ?
+                            <ListItem onClick={() => navigation(item.path)} key={item} disablePadding sx={{
+                                display: 'block'
+                            }}>
+                                <ListItemButton sx={{height: "64px"}}>
+                                    <ListItemIcon sx={{marginLeft: "10px"}}>
+                                        {item.icon}
+                                    </ListItemIcon>
+                                    <ListItemText primary={item.title} sx={{opacity: open ? 1 : 0}}/>
+                                </ListItemButton>
+                            </ListItem>
                             :
                             ""
                     ))}
                 </List>
             </Drawer>
+            <DrawerHeader/>
+            <div style={{marginRight: open ? "240px" : "76px", backgroundColor: "#F2F3F5"}}>
+                <Component/>
+            </div>
 
         </Box>
+
+
     );
 }

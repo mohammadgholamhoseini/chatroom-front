@@ -5,7 +5,7 @@ import {useRoutes} from "react-router-dom";
 import React from "react";
 import Main from "../feature/main/Main";
 import QuestionAnswerIcon from '@mui/icons-material/QuestionAnswer';
-import ChatRooms from "../feature/main/chatrooms/ChatRooms";
+import ChatRoom from "../feature/main/chatroom/ChatRoom";
 
 
 class Chatrooms extends React.Component<{}> {
@@ -13,36 +13,37 @@ class Chatrooms extends React.Component<{}> {
         return null;
     }
 }
+
 export const routesItem = [
     {
         path: "",
         element: <Landing/>,
-        title:"",
+        title: "",
         icon: ""
     },
     {
         path: "/register",
         element: <Register/>,
-        title:"",
+        title: "",
         icon: ""
     },
     {
         path: "/login",
         element: <Login/>,
-        title:"",
+        title: "",
         icon: ""
     },
     {
         path: "/main",
         element: <Main/>,
-        title:"",
+        title: "",
         icon: ""
     },
     {
-        path: "/chatRooms",
-        element: <ChatRooms/>,
-        title:"اتاق های گفت و گو",
-            icon: <QuestionAnswerIcon color="primary"/>
+        path: "/chatRoom",
+        element: <Main Component={ChatRoom}/>,
+        title: "اتاق گفت و گو",
+        icon: <QuestionAnswerIcon color="primary"/>
     },
 ]
 
