@@ -24,6 +24,8 @@
     "react-scripts": "^2.1.3",
     "react-toastify": "^9.0.3",
     "remove": "^0.1.5",
+    "sockjs-client": "^1.6.1",
+    "stompjs": "^2.3.3",
     "stylis": "^4.1.1",
     "stylis-plugin-rtl": "^2.1.1",
     "web-vitals": "^2.1.4",

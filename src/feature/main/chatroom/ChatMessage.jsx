@@ -7,14 +7,14 @@ export default function ChatMessage(props){
     return(
         <div style={{marginBottom:"32px"}}>
             <Grid container >
-                <Grid md={0.75}>
+                <Grid item md={0.75}>
                     <Avatar alt="Remy Sharp" src={props.userImage} />
                     <IconButton sx={{marginTop:"32px"}}>
                         <ReplyIcon color="primary" />
                     </IconButton>
 
                 </Grid>
-                <Grid md={11}>
+                <Grid item md={11}>
                     <Typography variant="subtitle2" sx={{fontWeight:"bold"}} gutterBottom> {props.username}</Typography>
                     <Typography sx={{textAlign:"right"}}> {props.message}</Typography>
 

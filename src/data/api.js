@@ -1,8 +1,10 @@
 import axios from "axios";
 import {getToken} from "./localStorage";
+import * as stompClient from "sockjs-client";
 
 
-const baseApiUrl = "http://localhost:8081"
+const baseApiUrl = "http://localhost:8081";
+export const socketUrl = baseApiUrl+"/websocket-chat";
 export function post(url, creds) {
     axios.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
     return axios.post(baseApiUrl + url, creds, {
@@ -71,3 +73,12 @@ export function loginUserApi(user) {
         password:user.password,
     })
 }
+export function sendStompMessage(message) {
+    return  stompClient.send("/app/message", {}, {
+        username:message.username,
+        content:message.content,
+        userImage:message.userImage,
+    });
+}
+
+export const socketPublicUrl = '/topic/public';

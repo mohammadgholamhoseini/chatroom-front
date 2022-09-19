@@ -2,13 +2,10 @@ import {createSlice} from "@reduxjs/toolkit";
 import {loginUserApi, registerUserApi} from "../../data/api";
 import {SUCCESS_CREATE, SUCCESS_LOGIN} from "../../data/messages";
 import {errorMessage, successMessage} from "../../data/toastMessages";
-import {saveToken} from "../../data/localStorage";
+import {getToken, saveToken} from "../../data/localStorage";
+
 const initialState = {
-    user: {
-        username: "",
-        email: "",
-        password: ""
-    },
+    user: null
 }
 
 const userSlice = createSlice({
@@ -31,17 +28,21 @@ const userSlice = createSlice({
             state.user = action.payload
             loginUserApi(state.user).then(jsonResponse => {
                 successMessage([SUCCESS_LOGIN])
-                console.log(jsonResponse)
                 saveToken(jsonResponse.data);
-
             }).catch(e => {
                     errorMessage(e)
                 }
             )
 
+        },
+        getLoginUserInfo: (state, action) => {
+
         }
     }
 })
-export const {registerAction,loginAction} = userSlice.actions
+
+export const userState = (state) => state.userState;
+
+export const {registerAction, loginAction} = userSlice.actions
 
 export default userSlice.reducer

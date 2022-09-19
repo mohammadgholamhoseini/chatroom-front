@@ -6,49 +6,47 @@ import React from "react";
 import Main from "../feature/main/Main";
 import QuestionAnswerIcon from '@mui/icons-material/QuestionAnswer';
 import ChatRoom from "../feature/main/chatroom/ChatRoom";
-
-
-class Chatrooms extends React.Component<{}> {
-    render() {
-        return null;
-    }
-}
+import {useSelector} from "react-redux";
+import {userState} from "../feature/user/userSlice";
+import {getToken} from "../data/localStorage";
 
 export const routesItem = [
     {
         path: "",
-        element: <Landing/>,
+        element: checks(false,<Landing/>),
         title: "",
-        icon: ""
+        icon: "",
     },
     {
         path: "/register",
-        element: <Register/>,
+        element: checks(false,<Register/>),
         title: "",
-        icon: ""
+        icon: "",
     },
     {
         path: "/login",
-        element: <Login/>,
+        element: checks(false,<Login/>),
         title: "",
-        icon: ""
+        icon: "",
     },
     {
         path: "/main",
-        element: <Main/>,
+        element: checks(true,<Main/>),
         title: "",
-        icon: ""
+        icon: "",
     },
     {
         path: "/chatRoom",
-        element: <Main Component={ChatRoom}/>,
+        element: checks(true,<Main Component={ChatRoom}/>),
         title: "اتاق گفت و گو",
-        icon: <QuestionAnswerIcon color="primary"/>
+        icon: <QuestionAnswerIcon color="primary"/>,
     },
 ]
-
+function checks(needLogin,component){
+    if (needLogin)
+        return !!getToken() ? component : <Login/>
+    return component;
+}
 export default function RoutesConfig() {
-    let element = useRoutes(routesItem);
-
-    return element;
+    return useRoutes(routesItem);
 }
